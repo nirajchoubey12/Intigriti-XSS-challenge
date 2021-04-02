@@ -52,5 +52,34 @@ Break down the source in different steps:
     - (1) declare _note and assing innerText of note-display paragraph
     - (2) onkeyup event on note-display check note-display paragraph innerText is changed, if yes then display the save button, else hide the save button
     - (3) on clicking the save button assign the innerText of notes-display to notes-value and submit the form.
+  - one more interesting thing to note is the comment `<!-- page generated at 2021-04-02 09:36:09 --> ` at the bottom of the page\
 
+Changing the note and clicking on save will send a POST request and updated note will be reflected on the page
+```
+POST / HTTP/1.1
+Host: challenge-0321.intigriti.io
+Connection: close
+Content-Length: 58
+Cookie: PHPSESSID=46c7eeb13d285bc57ef010c799372735
+
+csrf=36cd9b23b082ae06c73c73e79a6dc64f&notes=No+notes+saved
+```
+If we add  special character like <> , & these were being html escaped, however charaters like !, #, $, @, ^,*,(,),',"  were not escaped
+```
+POST / HTTP/1.1
+Host: challenge-0321.intigriti.io
+Cookie: PHPSESSID=46c7eeb13d285bc57ef010c799372735
+
+csrf=504d6da7a099d980ac787f87850626b4&notes=No+notes+saved+%3C%3E%3C%3C%21%23%24%40%5E%26*%23%28%23%29+%27%22%2C
+```
     
+```html
+     <div class="card-container">
+         <form method="POST" action="./" id="update-notes">
+            <div class="card-header">Your notes:<span id="actions"><a id="notes-save" href="#">save</a></span></div>
+            <p id="notes-display" class="card-content" contenteditable="true">No notes saved &lt;&gt;&lt;&lt;!#$@^&amp;*#(#) '",</p>
+            <input type="hidden" name="csrf" value="be98377d284ac8c558ac9c8303f50ab1"/>
+            <input type="hidden" id="notes-value"  name="notes" value=""/>
+         </form>
+      </div>
+```
