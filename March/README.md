@@ -46,4 +46,7 @@ Check out the source of the html page
 Break down the source in different steps:
   - There is a form with id update-notes. Notable thing in the form is `<p>` tag with attribute contenteditable="true", we will revisit this cause this important.
     - Form has two hidden input field: csrf , notes
+    - csrf value 6896be5ae9b23b85432afab717277824 seems to be an MD5 value
+    - ![image](https://user-images.githubusercontent.com/19681324/113405494-90ad8d00-93c7-11eb-9fba-32c1452fa015.png)
+
     
