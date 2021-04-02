@@ -23,8 +23,8 @@ Check out the source of the html page
          </form>
       </div>
       <script>
-          var _note = document.getElementById("notes-display").innerText;
-          document.getElementById("notes-display").onkeyup = function(e){
+          var _note = document.getElementById("notes-display").innerText;   // (1)
+          document.getElementById("notes-display").onkeyup = function(e){   // (2)
             var note = document.getElementById("notes-display").innerText;
             if(note != _note){
               document.getElementById("notes-save").style.visibility = "visible";
@@ -33,14 +33,14 @@ Check out the source of the html page
               document.getElementById("notes-save").style.visibility = "hidden";
             }
           }
-          document.getElementById("notes-save").onclick = function(e){
+          document.getElementById("notes-save").onclick = function(e){  // (3)
             document.getElementById('notes-value').value = document.getElementById('notes-display').innerText;
             this.closest('form').submit();
             return false;
           }
       </script>
    </body>
-   <!-- page generated at 2021-04-02 09:36:09 -->
+   <!-- page generated at 2021-04-02 09:36:09 --> 
 </html>
 ```
 Break down the source in different steps:
@@ -48,6 +48,7 @@ Break down the source in different steps:
     - Form has two hidden input field: csrf , notes
     - csrf value 6896be5ae9b23b85432afab717277824 seems to be an MD5 value
     - ![image](https://user-images.githubusercontent.com/19681324/113405642-c6eb0c80-93c7-11eb-9e47-f29410a59178.png)
-  -
+  - Script section
+    - 
 
     
