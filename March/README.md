@@ -10,3 +10,4 @@ The solution...
   - Should alert() the following flag: flag{THIS_IS_THE_FLAG}.
   - Should leverage a cross site scripting vulnerability on this page.
   - Shouldn't be self-XSS or related to MiTM attacks
+ 
