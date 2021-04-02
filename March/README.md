@@ -129,9 +129,7 @@ which gets us an alert
 However this involves user interaction, to avoid user interaction we hope over to the burpsuite xss cheat sheet.https://portswigger.net/web-security/cross-site-scripting/cheat-sheet  we have two specific payloads which works in chrome, does not work in firefox though
 ![image](https://user-images.githubusercontent.com/19681324/113430130-447a4100-93f7-11eb-915b-925d8532a2d1.png)
 
-and both of these payloads can be triggered by using #x ( id used in the payload )
-
-
+and both of these payloads can be triggered by using #x ( id used in the payload ) in the url. so the resultant payload would be `"id='x'tabindex='1'onfocusin='alert(flag.innerText)'"@x.y`
 
 It's not solved yet, as mentioned in the solution section of the CTF self-xss are not allowed. so we have to trick someone into clicking a link and triggering the xss. but there is one problem. There is CSRF protection. Using an invalid csrf token gives us a 403 forbidden response and csrf token changes each time we send a request to the server
 ```html
@@ -156,6 +154,6 @@ tried `"<svg/onload=alert(1)>"@x.y`
 
 Reference
 --------------
-https://holme-sec.medium.com/timestamps-and-weird-emails-a-solution-for-intigritis-0321-challenge-849dfee9e798
-https://infosecwriteups.com/intigriti-xss-challenge-0321-472ae0a48254
-https://blog.isiraadithya.com/intigriti-0321-xss-challenge-writeup/
+- https://holme-sec.medium.com/timestamps-and-weird-emails-a-solution-for-intigritis-0321-challenge-849dfee9e798
+- https://infosecwriteups.com/intigriti-xss-challenge-0321-472ae0a48254
+- https://blog.isiraadithya.com/intigriti-0321-xss-challenge-writeup/
