@@ -1,13 +1,8 @@
 
-# Not Solved By Me
 Intigriti March XSS challenge
 
 Problem Statement
 ----------------------
 URL : https://challenge-0321.intigriti.io/
-The solution...
-  - Should work on the latest version of Firefox or Chrome
-  - Should alert() the following flag: flag{THIS_IS_THE_FLAG}.
-  - Should leverage a cross site scripting vulnerability on this page.
-  - Shouldn't be self-XSS or related to MiTM attacks
- 
+
+![image](https://user-images.githubusercontent.com/19681324/113403529-6c9c7c80-93c4-11eb-8f6f-b5aa5ee503e0.png)
