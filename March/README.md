@@ -95,13 +95,30 @@ csrf=e15e6d924554f427fd53ff9b5b319069&notes=https://www.google.com+abc@def.com
 ```
 Response
 ```html
-<p id="notes-display" class="card-content" contenteditable="true"><a href="https://www.google.com " target="_blank">https://www.google.com </a> <a href="mailto:abc@def.com">abc@def.com</a></p>
+<p id="notes-display" class="card-content" contenteditable="true">
+  <a href="https://www.google.com " target="_blank">https://www.google.com </a>
+  <a href="mailto:abc@def.com">abc@def.com</a>
+</p>
 ```
 URL and email addresses are turning into an anchor tag.
 ![image](https://user-images.githubusercontent.com/19681324/113423650-7df97f00-93ec-11eb-8e96-b8fda73ef182.png)
 
 However invalid email addresses and URL were not getting transformed e.g. invalid url- https:/www.google.com   invalid email - @soemthing.com
 ```html
-  <p id="notes-display" class="card-content" contenteditable="true">https:/www.google.com  @soemthing.com</p>
+  <p id="notes-display" class="card-content" contenteditable="true">
+    https:/www.google.com  @soemthing.com
+  </p>
 ```
 
+Tried a lot with url to escape the anchor tag and alert the flag, but didn't work. 
+Doing a simple google search with the text xss email payload , first result is https://brutelogic.com.br/blog/xss-limited-input-formats/  
+
+
+
+
+
+Things i tried but didn't work
+------------------------------
+
+tried `javascript://%0Aalert(1)`
+tried `"<svg/onload=alert(1)>"@x.y`
