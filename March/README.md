@@ -138,7 +138,7 @@ Server: nginx/1.17.10
 Cache-Control: no-store, no-cache, must-revalidate
 Pragma: no-cache
 ```
-
+ 
 Bypassing CSRF
 -------------
 
