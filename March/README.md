@@ -44,11 +44,13 @@ Check out the source of the html page
 </html>
 ```
 Break down the source in different steps:
-  - There is a form with id update-notes. Notable thing in the form is `<p>` tag with attribute contenteditable="true", we will revisit this cause this important.
+  - There is a form with id update-notes. Notable thing in the form is `<p>` tag with attribute `contenteditable="true"`, we will revisit this cause this important.
     - Form has two hidden input field: csrf , notes
     - csrf value 6896be5ae9b23b85432afab717277824 seems to be an MD5 value
     - ![image](https://user-images.githubusercontent.com/19681324/113405642-c6eb0c80-93c7-11eb-9e47-f29410a59178.png)
   - Script section
-    - 
+    - (1) declare _note and assing innerText of note-display paragraph
+    - (2) onkeyup event on note-display check note-display paragraph innerText is changed, if yes then display the save button, else hide the save button
+    - (3) on clicking the save button assign the innerText of notes-display to notes-value and submit the form.
 
     
