@@ -44,5 +44,6 @@ Check out the source of the html page
 </html>
 ```
 Break down the source in different steps:
-  - There is a form with is update-notes
-   -- 
+  - There is a form with id update-notes. Notable thing in the form is `<p>` tag with attribute contenteditable="true", we will revisit this cause this important.
+    - Form has two hidden input field: csrf , notes
+    
