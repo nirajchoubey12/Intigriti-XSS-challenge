@@ -126,6 +126,13 @@ however " are not escaped, as we can see avobe we came out of href attribute. So
 which gets us an alert 
 ![image](https://user-images.githubusercontent.com/19681324/113427645-0a0ea500-93f3-11eb-93b3-9571e871e645.png)
 
+However this involves user interaction, to avoid user interaction we hope over to the burpsuite xss cheat sheet.https://portswigger.net/web-security/cross-site-scripting/cheat-sheet  we have two specific payloads which works in chrome, does not work in firefox though
+![image](https://user-images.githubusercontent.com/19681324/113430130-447a4100-93f7-11eb-915b-925d8532a2d1.png)
+
+and both of these payloads can be triggered by using #x ( id used in the payload )
+
+
+
 It's not solved yet, as mentioned in the solution section of the CTF self-xss are not allowed. so we have to trick someone into clicking a link and triggering the xss. but there is one problem. There is CSRF protection. Using an invalid csrf token gives us a 403 forbidden response and csrf token changes each time we send a request to the server
 ```html
 HTTP/1.1 403 Forbidden
@@ -134,8 +141,8 @@ Cache-Control: no-store, no-cache, must-revalidate
 Pragma: no-cache
 ```
 
-CSRF Bypass
------------
+Bypassing CSRF
+-------------
 
 
 
@@ -145,3 +152,10 @@ Things i tried but didn't work
 
 tried `javascript://%0Aalert(1)`
 tried `"<svg/onload=alert(1)>"@x.y`
+
+
+Reference
+--------------
+https://holme-sec.medium.com/timestamps-and-weird-emails-a-solution-for-intigritis-0321-challenge-849dfee9e798
+https://infosecwriteups.com/intigriti-xss-challenge-0321-472ae0a48254
+https://blog.isiraadithya.com/intigriti-0321-xss-challenge-writeup/
