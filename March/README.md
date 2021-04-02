@@ -12,7 +12,7 @@ Let's Pop an alert
 At the bottom of the page there is an **Your notes:** section. 
 ![image](https://user-images.githubusercontent.com/19681324/113403778-d026aa00-93c4-11eb-88f6-7d793631fccc.png)
 
-Looking at the source of the html page
+Check out the source of the html page
 ```
   <div class="card-container">
          <form method="POST" action="./" id="update-notes">
@@ -43,4 +43,6 @@ Looking at the source of the html page
    <!-- page generated at 2021-04-02 09:36:09 -->
 </html>
 ```
-
+Break down the source in different steps:
+  - There is a form with is update-notes
+   -- 
