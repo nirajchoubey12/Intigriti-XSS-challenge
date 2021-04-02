@@ -85,3 +85,23 @@ Response
       </div>
 ```
 
+One interesting transformation of response occure while updating note-display to an url or email
+```
+POST / HTTP/1.1
+Host: challenge-0321.intigriti.io
+Cookie: PHPSESSID=46c7eeb13d285bc57ef010c799372735
+
+csrf=e15e6d924554f427fd53ff9b5b319069&notes=https://www.google.com+abc@def.com
+```
+Response
+```html
+<p id="notes-display" class="card-content" contenteditable="true"><a href="https://www.google.com " target="_blank">https://www.google.com </a> <a href="mailto:abc@def.com">abc@def.com</a></p>
+```
+URL and email addresses are turning into an anchor tag.
+![image](https://user-images.githubusercontent.com/19681324/113423650-7df97f00-93ec-11eb-8e96-b8fda73ef182.png)
+
+However invalid email addresses and URL were not getting transformed e.g. invalid url- https:/www.google.com   invalid email - @soemthing.com
+```html
+  <p id="notes-display" class="card-content" contenteditable="true">https:/www.google.com  @soemthing.com</p>
+```
+
