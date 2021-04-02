@@ -13,6 +13,7 @@ At the bottom of the page there is an **Your notes:** section.
 ![image](https://user-images.githubusercontent.com/19681324/113403778-d026aa00-93c4-11eb-88f6-7d793631fccc.png)
 
 Looking at the source of the html page
+```
   <div class="card-container">
          <form method="POST" action="./" id="update-notes">
             <div class="card-header">Your notes:<span id="actions"><a id="notes-save" href="#">save</a></span></div>
@@ -41,5 +42,5 @@ Looking at the source of the html page
    </body>
    <!-- page generated at 2021-04-02 09:36:09 -->
 </html>
-
+```
 
