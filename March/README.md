@@ -44,7 +44,7 @@ Check out the source of the html page
 </html>
 ```
 Break down the source in different steps:
-  - There is a form with id update-notes. Notable thing in the form is `<p>` tag with attribute `contenteditable="true"`, we will revisit this cause this important.
+  - There is a form with id update-notes. Notable thing in the form is `<p>` tag with attribute `contenteditable="true"`, which makes this p tag editable.
     - Form has two hidden input field: csrf , notes
     - csrf value 6896be5ae9b23b85432afab717277824 seems to be an MD5 value
     - ![image](https://user-images.githubusercontent.com/19681324/113405642-c6eb0c80-93c7-11eb-9e47-f29410a59178.png)
