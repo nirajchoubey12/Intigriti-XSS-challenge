@@ -142,8 +142,10 @@ Pragma: no-cache
 Bypassing CSRF
 -------------
 To bypass CSRF protection, we have to analyze the working or csrf token
-1. When you browse the url https://challenge-0321.intigriti.io/ for the first time application set the session id in the cookie and returns a CSRF token along with a commentes timestamp at the bottom of the page
-2. 
+1. When you browse the url https://challenge-0321.intigriti.io/ for the first time application set the session id in the cookie and returns a CSRF token along with a commentes timestamp at the bottom of the page ```  <input type="hidden" name="csrf" value="12b0fbaa60f0656c93ad0278e0f59d91"/>   <!-- page generated at 2021-04-04 02:22:43 --> ```
+2. Hop over to the cyberchef to check that the csrf token is the md5 hash of the page generated timestamp ![image](https://user-images.githubusercontent.com/19681324/113497370-142ec180-9521-11eb-9dbd-90cedd7d9435.png)
+
+3.  
 
 
 
