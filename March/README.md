@@ -221,7 +221,7 @@ Final POC
 
 ![image](https://user-images.githubusercontent.com/19681324/113505269-4c52f600-955b-11eb-8a27-6edb2130d6e6.png)
 
-#Note - I could not solve this. I have written this based on the writeups mentioned in the credit and reference section below. I wrote this to learn and cement the concepts used in the challenge. Hopefully someone else benifits from this.
+#Note - **I did not solve this**. I have written this based on the writeups mentioned in the **credit and reference section** below. I wrote this to learn and cement the concepts used in the challenge. Hopefully someone else benifits from this.
 
 
 
