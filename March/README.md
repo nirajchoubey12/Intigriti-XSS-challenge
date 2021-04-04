@@ -158,6 +158,6 @@ tried `"<svg/onload=alert(1)>"@x.y`
 
 Credit and reference
 --------------------
-- https://holme-sec.medium.com/timestamps-and-weird-emails-a-solution-for-intigritis-0321-challenge-849dfee9e798  -- Credit for Not user interaction and html POC
+- https://holme-sec.medium.com/timestamps-and-weird-emails-a-solution-for-intigritis-0321-challenge-849dfee9e798  -- @holme_sec : Credit for No user interaction xss and html POC
 - https://infosecwriteups.com/intigriti-xss-challenge-0321-472ae0a48254 
 - https://blog.isiraadithya.com/intigriti-0321-xss-challenge-writeup/
