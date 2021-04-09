@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Intigriti Challenge 0221 - By @holme_sec</title>   
+    <meta http-equiv="Content-Security-Policy"  content="script-src 'strict-dynamic' 'nonce-zLanz2x3A1Y63Oe8Idz4bTJIluY=' 'unsafe-eval' http: https:;object-src 'none';base-uri 'none';" />
+   </head>
+  <body>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-5 mb-3">
+          <h3 class="text-center">Submit your assignment:</h3>
+          <div>
+            <form>
+              <div class="input-group mb-3">
+                <input name="assignmentTitle"  id="assignmentTitle" class="form-control" type="text"  value=""  placeholder="Assignment title" />
+              </div>
+              <div class="input-group mb-3">
+                <textarea  name="assignmentText" id="assignmentText"   class="form-control"  type="text" placeholder="Type your cool assignment here! Min 50 chars"> </textarea
+                >
+              </div>
+
+              <label for="answer">Are you a robot? Please solve this:</label>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="question">Loading...</span>
+                </div>
+                <input id="answer" type="text" class="form-control" aria-describedby="question" />
+              </div>
+              <a id="submit" class="btn float-end mb-5">Submit</a>
+            </form>
+          </div>
+          <span id="grade" class="badge bg-success"></span>
+          <p id="message" class="lead mb-0"></p>
+          <p id="share" style="visibility: hidden">
+            You can share your work via
+            <a id="share-link">this link</a>.
+          </p>
+        </div>
+      </div>
+     
+      </div>
+    </div>
+    <script src="./script.js" nonce="zLanz2x3A1Y63Oe8Idz4bTJIluY="></script>
+   
+  </body>
+</html>
